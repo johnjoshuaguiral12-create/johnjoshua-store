@@ -5,7 +5,7 @@ import { CheckCircle2, AlertCircle, ShieldCheck } from 'lucide-react';
 
 export function OrderForm({ preselectedVariant }: { preselectedVariant?: string | null }) {
   const [formData, setFormData] = useState({
-    customer_name: '', phone: '', email: '', city: '', address: '',
+    customer_name: '', phone: '', email: '', city: '', address: '', landmark: '',
     country: STORE_CONFIG.DEFAULT_COUNTRY, product_variant: STORE_CONFIG.MENU[0].name || '',
     quantity: 1, notes: ''
   });
@@ -44,7 +44,7 @@ export function OrderForm({ preselectedVariant }: { preselectedVariant?: string 
         phone: formData.phone,
         email: formData.email,
         city: formData.city,
-        address: formData.address,
+        address: formData.landmark ? `${formData.address} (Landmark: ${formData.landmark})` : formData.address,
         country: formData.country,
         product_name: STORE_CONFIG.PRODUCT_NAME,
         product_variant: formData.product_variant,
@@ -140,6 +140,17 @@ export function OrderForm({ preselectedVariant }: { preselectedVariant?: string 
                   className="w-full px-3 py-2 bg-[#faf5f0] border border-[#e5d5c5] rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-[#b08968] transition-all text-[#3d2314]" 
                 />
                 {errors.address && <p className="text-red-500 text-xs">{errors.address}</p>}
+              </div>
+              <div className="md:col-span-2 space-y-1">
+                <label className="text-[10px] font-bold text-[#b08968] uppercase tracking-tighter block">Landmark (Optional)</label>
+                <input 
+                  type="text" 
+                  value={formData.landmark} 
+                  onChange={e => setFormData({...formData, landmark: e.target.value})} 
+                  disabled={status === 'submitting' || status === 'success'}
+                  className="w-full px-3 py-2 bg-[#faf5f0] border border-[#e5d5c5] rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-[#b08968] transition-all text-[#3d2314]" 
+                  placeholder="e.g. Near 7-Eleven, beside the blue gate"
+                />
               </div>
               <div className="space-y-1">
                 <label className="text-[10px] font-bold text-[#b08968] uppercase tracking-tighter block">City *</label>
