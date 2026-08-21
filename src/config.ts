@@ -1,14 +1,29 @@
+import caramelMacchiatoImg from './assets/images/caramel_macchiato_1787297942395.jpg';
+import spanishLatteImg from './assets/images/spanish_latte_1787297960931.jpg';
+import mochaLatteImg from './assets/images/mocha_latte_1787297981457.jpg';
+import classicLatteImg from './assets/images/classic_latte_1787297993460.jpg';
+import americanoImg from './assets/images/americano_1787298006989.jpg';
+
 export const STORE_CONFIG = {
   // ---------------------------------------------------------
   // ✏️ BEGINNERS: EDIT YOUR STORE DETAILS HERE
   // ---------------------------------------------------------
-  STORE_NAME: "YOUR STORE NAME",
-  PRODUCT_NAME: "YOUR PRODUCT NAME",
-  PRODUCT_DESCRIPTION: "YOUR PRODUCT DESCRIPTION",
-  PRICE_PER_UNIT: 49,
-  CURRENCY: "USD",
-  VARIANTS: ["Variant A", "Variant B", "Variant C"],
-  DEFAULT_COUNTRY: "United States",
+  STORE_NAME: "JOHN COFFEE'S",
+  PRODUCT_NAME: "Timpla Coffee",
+  PRODUCT_DESCRIPTION: "Exceptional coffee, warm atmosphere, and good vibes—every single day.",
+  CURRENCY: "₱",
+  
+  // Update variants to match the menu
+  MENU: [
+    { name: "Caramel Macchiato", type: "⭐ Special", price: 49, image: caramelMacchiatoImg },
+    { name: "Spanish Latte", type: "⭐ Special", price: 49, image: spanishLatteImg },
+    { name: "Mocha Latte", type: "⭐ Special", price: 49, image: mochaLatteImg },
+    { name: "Classic Latte", type: "Regular", price: 30, image: classicLatteImg },
+    { name: "Americano", type: "Regular", price: 30, image: americanoImg }
+  ],
+  
+  // Default variant for the form
+  DEFAULT_COUNTRY: "Philippines",
 
   // ---------------------------------------------------------
   // 🗄️ SUPABASE DATABASE CONNECTION
